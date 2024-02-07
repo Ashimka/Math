@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="./image//favicon.ico" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Математика</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header__left">
+          <div class="name-out"></div>
+        </div>
+        <div class="header__right">
+          <img src="./image/chest.jpg" alt="сундук" class="image" />
+          <div class="points"></div>
+        </div>
+      </header>
+      <div class="name">
+        <label for="name">Напиши своё имя</label>
+        <input class="input-name" type="text" name="name" id="name" required />
+        <button class="btn-name">Сохранить</button>
+      </div>
+      <main class="main">
+        <button class="btn-start">Начать</button>
+        <div class="main__task">
+          <div class="first-line"></div>
+          <div class="second-line"></div>
+          <div class="result-line"></div>
+          <button class="btn-result" disabled>Проверить</button>
+          <div class="out-result"></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>
