@@ -21,16 +21,23 @@
       </header>
       <div class="name">
         <label for="name">Напиши своё имя</label>
-        <input class="input-name" type="text" name="name" id="name" required />
-        <button class="btn-name">Сохранить</button>
+        <input
+          class="input-name"
+          type="text"
+          tabindex="1"
+          name="name"
+          id="name"
+          required
+        />
+        <button class="btn-name" tabindex="2">Сохранить</button>
       </div>
       <main class="main">
-        <button class="btn-start">Начать</button>
+        <button class="btn-start" tabindex="3">Начать</button>
         <div class="main__task">
           <div class="first-line"></div>
           <div class="second-line"></div>
           <div class="result-line"></div>
-          <button class="btn-result" disabled>Проверить</button>
+          <button class="btn-result" tabindex="7" disabled>Проверить</button>
           <div class="out-result"></div>
         </div>
       </main>

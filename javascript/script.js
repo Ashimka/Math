@@ -86,6 +86,8 @@ const characters = (arr) => {
     class="input-result"
     id="result-${index}"
     type="text"
+    tabindex="${6 - index}"
+    inputmode="numeric"
     required="true"   
     maxlength="1"
   />
@@ -101,6 +103,9 @@ const checkExampleResult = () => {
     const result = resultThird
         ? resultFirst.value + resultSecond.value + resultThird.value
         : resultFirst.value + resultSecond.value;
+    if (!result) {
+        return (outResult.textContent = "Реши пример");
+    }
     if (+result === getSumNumbers(arrNumbers)) {
         outResult.textContent = "Good";
         outResult.classList.add("correct");
