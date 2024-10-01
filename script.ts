@@ -8,7 +8,10 @@ const secondLine = document.querySelector(".second-line");
 const outResult = document.querySelector(".out-result");
 
 let arrNumbers: [number?, number?] = [];
-let answers = JSON.parse(localStorage.getItem("Answers"));
+let answers = JSON.parse(localStorage.getItem("Answers")) || {
+  correct: 0,
+  incorrect: 0,
+};
 
 // Запись ответов в localStorage
 const setAnswersToLocalStorage = () => {
@@ -17,8 +20,6 @@ const setAnswersToLocalStorage = () => {
 
 // получение правильных ответов
 const getRightAnswers = () => {
-  // let rightAnswers = JSON.parse(localStorage.getItem("answers"));
-
   if (answers) {
     points.textContent = String(answers.correct);
   }
@@ -32,7 +33,6 @@ const checkUserName = () => {
   if (userName) {
     nameBox.classList.add("hidden");
     getRightAnswers();
-    // setAnswersToLocalStorage();
   }
 };
 checkUserName();
@@ -40,9 +40,8 @@ checkUserName();
 // Создание имени пользователы и сохранения его в localStorage и скрытие блока ввода имени
 const inputUserName = () => {
   const inputName = document.querySelector(".input-name") as HTMLInputElement;
-  let answers = { correct: 0, incorrect: 0 };
 
-  localStorage.setItem("Answers", JSON.stringify(answers));
+  localStorage.setItem("Answers", JSON.stringify({ correct: 0, incorrect: 0 }));
 
   if (inputName.value) {
     const name = inputName.value.trim();
@@ -135,14 +134,15 @@ const checkExampleResult = () => {
   if (+result === getSumNumbers(arrNumbers)) {
     outResult.textContent = "Good";
     outResult.classList.add("correct");
-    answers.correct++;
+
+    answers.correct === 0 ? (answers.correct = 1) : answers.correct++;
     setAnswersToLocalStorage();
     getRightAnswers();
   } else {
     outResult.textContent = "No";
     outResult.classList.add("incorrect");
 
-    answers.incorrect++;
+    answers?.incorrect === 0 ? (answers.incorrect = 1) : answers.incorrect++;
     setAnswersToLocalStorage();
   }
 
